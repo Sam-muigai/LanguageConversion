@@ -1,13 +1,13 @@
 fun main() {
     try {
-        println(convertFromHundredToThousand("maghana iwi na mirongo irandadu na mfungade"))
+        println(convertFromHundredToThousand("maghana iwi na mirongo ikenda"))
     }catch (e:Exception){
         println(e.message)
     }
 }
 
 
-fun convertFromHundredToThousand(number: String):Int?{
+fun convertFromHundredToThousand(number: String): Int {
     val numArray = number.split(" ")
     if (number.contains("ighana")){
         //Case for 100
@@ -44,6 +44,10 @@ fun convertFromHundredToThousand(number: String):Int?{
             4 ->{
                 "${convertToNumber(numArray[1].trim())}10".toInt()
             }
+            //290,340,930
+            5 ->{
+                "${convertToNumber(numArray[1].trim())}${convertToNumber(numArray[4].trim())}0".toInt()
+            }
             //211,314,517 ...
             6 ->{
                 val tenths = "${numArray[3]} ${numArray[4]} ${numArray[5]}"
@@ -64,7 +68,6 @@ fun convertFromHundredToThousand(number: String):Int?{
     }else{
         return convertStringToNumbers(number)
     }
-    return null
 }
 
 
